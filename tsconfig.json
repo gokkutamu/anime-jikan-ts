@@ -1,13 +1,26 @@
 {
     "compilerOptions": {
-        "module": "commonjs", // module initialization method
+        "target": "es6",  //Level Of the output (here is es6)
+        "lib": [
+            "dom", 
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
         "esModuleInterop": true,
-        "target": "es6", //Level Of the output (here is es6)
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "esnext",
         "moduleResolution": "node",
-        "sourceMap": true,
-        "outDir": "dist" //Where to save the .js file after it is compiled. We save it in the dist . folder
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "preserve"
     },
-    "lib": [
-        "es2015"
+    "include": [
+        "src"
     ]
 }
