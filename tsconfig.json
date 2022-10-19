@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs", // module initialization method
+        "esModuleInterop": true,
+        "target": "es6", //Level Of the output (here is es6)
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist" //Where to save the .js file after it is compiled. We save it in the dist . folder
+    },
+    "lib": [
+        "es2015"
+    ]
+}
