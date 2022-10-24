@@ -12,6 +12,7 @@ import { MdOutlineExplore } from 'react-icons/md';
 import { BsBookmarkHeart } from 'react-icons/bs';
 
 import { useCurrentView } from '../../hooks/useCurrentView';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface propsSidebar {
     isSidebarActive: boolean;
