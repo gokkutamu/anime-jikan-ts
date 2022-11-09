@@ -41,7 +41,7 @@ const Carousel: FC<CarouselProps> = ({
                     slidesPerView={1}
                     className="!absolute !top-0 !left-0 !w-full !h-full  !rounded-lg">
                     {(data as Item[]).map((film, index) => (
-                        <SwiperSlide key={film.id}>
+                        <SwiperSlide key={film.mal_id}>
                         </SwiperSlide>
                     ))}
                     <div className="absolute top-0 left-0 w-[8%] h-[11%] z-10"></div>

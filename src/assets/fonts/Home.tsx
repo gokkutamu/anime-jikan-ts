@@ -8,9 +8,12 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 // Component
 import Navigation from "../../app/components/Common/Navigation";
 import Sidebar from "../../app/components/Common/Sidebar";
+import MainHome from "../../app/components/List/MainHome";
 // import Carousel from "../../app/components/Part/Carousel";
 
 // Hooks and Stored Redux
+import { HomeFilms, Item } from "../../app/clients/types";
+import { getHomeMovies, getHomeTVs, getMovieBannerInfo, getTVBannerInfo } from "../../app/services/service";
 
 const Home: FC = () => {
     const [isSidebarActive, setIsSidebarActive] = useState(false);
@@ -18,6 +21,20 @@ const Home: FC = () => {
         localStorage.getItem("currentTab") || "tv"
     );
 
+    const {
+        data: dataMovie,
+        isLoading: isLoadingMovie,
+        isError: isErrorMovie,
+        error: errorMovie,
+    } = useQuery<HomeFilms, Error>(["home-movies"], getHomeMovies);
+    
+    const {
+        data: dataTV,
+        isLoading: isLoadingTV,
+        isError: isErrorTV,
+        error: errorTV,
+    } = useQuery<HomeFilms, Error>(["home-tvs"], getHomeTVs);
+    
     return (
         <>
             <Navigation value="Anime | Jikan" />
@@ -31,7 +48,7 @@ const Home: FC = () => {
                         Anime
                     </p>
                 </Link>
-                <button>
+                <button onClick={() => setIsSidebarActive((prev) => !prev)}>
                     <GiHamburgerMenu size={25} />
                 </button>
             </div>
@@ -57,7 +74,24 @@ const Home: FC = () => {
                             </button>
                         </div>
                     </div>
-
+                    
+                    {currentTab === "movie" && (
+                        <MainHome
+                        data={dataMovie}
+                        isLoadingSection={isLoadingMovie}
+                        />
+                    )}
+                    {currentTab === "tv" && (
+                        <MainHome
+                        data={dataTV}
+                        isLoadingSection={isLoadingTV}
+                        />
+                    )}
+                    {/* <div className="shrink-0 max-w-[310px] w-full hidden lg:block px-6 top-0 sticky ">
+                        <SearchBox />
+                        <RecommendGenres currentTab={currentTab} />
+                        <TrendingNow />
+                    </div> */}
                 </div>
             </div>
         </>
